@@ -1,112 +1,170 @@
-const detailRoot = document.getElementById("product-detail-page");
+const page = document.getElementById("product-page");
 const params = new URLSearchParams(window.location.search);
-const productId = params.get("id") || "blue-oxford-shirt";
-const selectedProduct = getProductById(productId) || fashionProducts[0];
-const fallbackShirt = selectedProduct.type === "shirt" ? selectedProduct : getProductById("blue-oxford-shirt");
+const product = getProductById(params.get("id")) || products[0];
 
-const state = {
-  shirt: fallbackShirt,
-  pant: getProductById(shirtToPantsMap[fallbackShirt.id][0]),
-  style: styleVariations[0],
-};
+if (page) {
+  const styleImages = product.styles;
+  const inspirationLooks = [
+    { image: product.styles[1], caption: "Casual Look" },
+    { image: product.styles[2], caption: "Office Look" },
+    { image: product.styles[3], caption: "Weekend Style" },
+    { image: product.styles[4], caption: "Summer Outfit" },
+  ];
 
-render();
+  const matchProducts = [2, 3, 4].map((id) => getProductById(id)).filter(Boolean);
+  const alsoLikeProducts = [5, 6, 7, 8].map((id) => getProductById(id)).filter(Boolean);
 
-function render() {
-  const matchingPants = shirtToPantsMap[state.shirt.id].map(getProductById);
-
-  detailRoot.innerHTML = `
-    <section class="detail-layout">
-      <img class="detail-image" src="${selectedProduct.image}" alt="${selectedProduct.name}" />
-      <div>
+  page.innerHTML = `
+    <section class="product-top">
+      <div class="top-image-wrap">
+        <img class="top-image" src="${product.styles[0]}" alt="${product.name}" />
+      </div>
+      <div class="top-copy">
         <p class="eyebrow">Product Detail</p>
-        <h1 class="page-title">${selectedProduct.name}</h1>
-        <p>${selectedProduct.description}</p>
-        <h2>${formatPrice(selectedProduct.price)}</h2>
-        <button class="btn-primary" type="button">Add to cart</button>
+        <h1>${product.name}</h1>
+        <p class="price">${formatPrice(product.price)}</p>
+        <p class="description">${product.description}</p>
+        <button class="primary-dark" type="button">Add to Cart</button>
       </div>
     </section>
 
-    <section class="virtual-preview">
-      <h2>See how this outfit looks styled</h2>
-      <div class="preview-stage">
-        <img id="preview-image" src="${composePreviewImage(state.shirt.name, state.pant.name, state.style)}" alt="Styled outfit preview" />
-      </div>
+    ${renderImageCarousel("Explore Styles", "styles-carousel", styleImages, false)}
 
-      <h3>Matching Pants Suggestions</h3>
-      <div class="chip-row" id="pants-row">
-        ${matchingPants
+    <section class="editorial-stack">
+      <h2>Style Inspiration</h2>
+      <div class="inspiration-grid">
+        ${inspirationLooks
           .map(
-            (pant) => `<button class="chip ${pant.id === state.pant.id ? "active" : ""}" data-pant-id="${pant.id}">${pant.name}</button>`
+            (item) => `
+              <article class="inspiration-card">
+                <img src="${item.image}" alt="${item.caption}" loading="lazy" />
+                <p>${item.caption}</p>
+              </article>
+            `
           )
-          .join("")}
-      </div>
-
-      <h3>Style this look</h3>
-      <div class="chip-row" id="styles-row">
-        ${styleVariations
-          .map(
-            (style) => `<button class="chip ${style === state.style ? "active" : ""}" data-style="${style}">${style}</button>`
-          )
-          .join("")}
-      </div>
-
-      <h3>Outfit Gallery</h3>
-      <div class="gallery-grid">
-        ${outfitGallery
-          .slice(0, 6)
-          .map((item) => `<img src="${item.image}" alt="${item.title}" loading="lazy" />`)
           .join("")}
       </div>
     </section>
 
-    <section class="section smart-match">
-      <h2>Perfect Match</h2>
-      <div class="match-list">
-        ${renderPerfectMatchCards()}
+    ${renderProductCarousel("Perfect Match", "match-carousel", matchProducts)}
+
+    <section class="styled-for-you">
+      <h2>Styled For You</h2>
+      ${[product.styles[1], product.styles[3], product.styles[5]]
+        .map(
+          (image, index) => `
+            <article class="parallax-card">
+              <div class="parallax-media" style="--parallax-shift:${(index + 1) * 12}px;">
+                <img src="${image}" alt="Editorial fashion look ${index + 1}" loading="lazy" />
+              </div>
+            </article>
+          `
+        )
+        .join("")}
+    </section>
+
+    ${renderProductCarousel("You May Also Like", "like-carousel", alsoLikeProducts)}
+  `;
+
+  initializeCarousels();
+  initializeParallax();
+}
+
+function renderImageCarousel(title, id, images) {
+  return `
+    <section class="carousel-section">
+      <div class="section-head with-controls">
+        <h2>${title}</h2>
+        <div class="carousel-controls">
+          <button class="arrow" type="button" data-target="${id}" data-direction="prev" aria-label="Previous">←</button>
+          <button class="arrow" type="button" data-target="${id}" data-direction="next" aria-label="Next">→</button>
+        </div>
+      </div>
+      <div class="carousel" id="${id}">
+        <div class="carousel-track">
+          ${images
+            .map(
+              (image) => `
+                <article class="carousel-slide image-slide">
+                  <img src="${image}" alt="Styled view of ${product.name}" loading="lazy" />
+                </article>
+              `
+            )
+            .join("")}
+        </div>
       </div>
     </section>
   `;
-
-  bindInteractions();
 }
 
-function bindInteractions() {
-  const pantsRow = document.getElementById("pants-row");
-  const stylesRow = document.getElementById("styles-row");
+function renderProductCarousel(title, id, items) {
+  return `
+    <section class="carousel-section">
+      <div class="section-head with-controls">
+        <h2>${title}</h2>
+        <div class="carousel-controls">
+          <button class="arrow" type="button" data-target="${id}" data-direction="prev" aria-label="Previous">←</button>
+          <button class="arrow" type="button" data-target="${id}" data-direction="next" aria-label="Next">→</button>
+        </div>
+      </div>
+      <div class="carousel" id="${id}">
+        <div class="carousel-track">
+          ${items
+            .map(
+              (item) => `
+                <a class="carousel-slide product-slide" href="product.html?id=${item.id}">
+                  <div class="slide-media">
+                    <img src="${item.styles[0]}" alt="${item.name}" loading="lazy" />
+                  </div>
+                  <p>${item.name}</p>
+                </a>
+              `
+            )
+            .join("")}
+        </div>
+      </div>
+    </section>
+  `;
+}
 
-  pantsRow.addEventListener("click", (event) => {
-    const target = event.target.closest("button[data-pant-id]");
-    if (!target) return;
-    state.pant = getProductById(target.dataset.pantId);
-    render();
+function initializeCarousels() {
+  const states = {};
+  const arrows = document.querySelectorAll(".arrow");
+
+  arrows.forEach((arrow) => {
+    arrow.addEventListener("click", () => {
+      const carouselId = arrow.dataset.target;
+      const direction = arrow.dataset.direction;
+      const carousel = document.getElementById(carouselId);
+      if (!carousel) return;
+
+      const track = carousel.querySelector(".carousel-track");
+      const slides = track.children.length;
+      const visible = window.innerWidth < 768 ? 1 : window.innerWidth < 1100 ? 2 : 3;
+      const max = Math.max(0, slides - visible);
+
+      if (!states[carouselId]) states[carouselId] = 0;
+      states[carouselId] = direction === "next" ? Math.min(max, states[carouselId] + 1) : Math.max(0, states[carouselId] - 1);
+
+      track.style.transform = `translateX(-${states[carouselId] * (100 / visible)}%)`;
+    });
   });
-
-  stylesRow.addEventListener("click", (event) => {
-    const target = event.target.closest("button[data-style]");
-    if (!target) return;
-    state.style = target.dataset.style;
-    render();
-  });
 }
 
-function composePreviewImage(shirtName, pantName, style) {
-  const query = encodeURIComponent(`${shirtName} with ${pantName}, ${style}, fashion model`);
-  return `https://source.unsplash.com/1200x1400/?${query}`;
-}
+function initializeParallax() {
+  const medias = document.querySelectorAll(".parallax-media");
 
-function renderPerfectMatchCards() {
-  return Object.entries(shirtToPantsMap)
-    .slice(0, 3)
-    .map(([shirtId, pantIds]) => {
-      const shirt = getProductById(shirtId);
-      const pant = getProductById(pantIds[0]);
-      return `
-        <article class="match-item">
-          <h3>${shirt.name}</h3>
-          <p>+ ${pant.name}</p>
-        </article>
-      `;
-    })
-    .join("");
+  const applyParallax = () => {
+    medias.forEach((media) => {
+      const rect = media.getBoundingClientRect();
+      const viewportCenter = window.innerHeight / 2;
+      const elementCenter = rect.top + rect.height / 2;
+      const distance = (elementCenter - viewportCenter) * 0.08;
+      const baseShift = Number.parseFloat(getComputedStyle(media).getPropertyValue("--parallax-shift")) || 0;
+      media.style.transform = `translateY(${baseShift - distance}px)`;
+    });
+  };
+
+  applyParallax();
+  window.addEventListener("scroll", applyParallax, { passive: true });
 }

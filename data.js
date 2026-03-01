@@ -1,169 +1,179 @@
-const fashionProducts = [
+const products = [
   {
-    id: "blue-oxford-shirt",
-    type: "shirt",
+    id: 1,
     name: "Blue Oxford Shirt",
     price: 129,
-    image:
-      "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=900&q=80",
-    description: "A premium oxford cotton shirt with a crisp silhouette for smart-casual styling.",
+    description: "Tailored from premium cotton with a crisp finish for effortless day-to-night styling.",
+    styles: [
+      "images/prod1/style1.jpg",
+      "images/prod1/style2.jpg",
+      "images/prod1/style3.jpg",
+      "images/prod1/style4.jpg",
+      "images/prod1/style5.jpg",
+      "images/prod1/style6.jpg",
+    ],
   },
   {
-    id: "white-linen-shirt",
-    type: "shirt",
+    id: 2,
     name: "White Linen Shirt",
-    price: 119,
-    image:
-      "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=900&q=80",
-    description: "Breathable luxury linen shirt designed for effortless summer elegance.",
-  },
-  {
-    id: "black-casual-shirt",
-    type: "shirt",
-    name: "Black Casual Shirt",
-    price: 135,
-    image:
-      "https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=900&q=80",
-    description: "A clean black shirt with contemporary tailoring and elevated finishing.",
-  },
-  {
-    id: "olive-green-shirt",
-    type: "shirt",
-    name: "Olive Green Shirt",
-    price: 124,
-    image:
-      "https://images.unsplash.com/photo-1542327897-d73f4005b533?auto=format&fit=crop&w=900&q=80",
-    description: "Earth-tone statement piece balancing softness and structure.",
-  },
-  {
-    id: "striped-summer-shirt",
-    type: "shirt",
-    name: "Striped Summer Shirt",
-    price: 115,
-    image:
-      "https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=900&q=80",
-    description: "Lightweight striped shirt bringing movement and coastal sophistication.",
-  },
-  {
-    id: "denim-shirt",
-    type: "shirt",
-    name: "Denim Shirt",
     price: 139,
-    image:
-      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80",
-    description: "Structured denim shirt with minimalist detailing and urban versatility.",
+    description: "Lightweight linen with a modern cut, designed for elevated warm-weather dressing.",
+    styles: [
+      "images/prod2/style1.jpg",
+      "images/prod2/style2.jpg",
+      "images/prod2/style3.jpg",
+      "images/prod2/style4.jpg",
+      "images/prod2/style5.jpg",
+      "images/prod2/style6.jpg",
+    ],
   },
   {
-    id: "black-slim-pants",
-    type: "pants",
-    name: "Black Slim Pants",
+    id: 3,
+    name: "Black Casual Shirt",
+    price: 119,
+    description: "Minimal silhouette in deep black, ideal for clean monochrome outfit combinations.",
+    styles: [
+      "images/prod3/style1.jpg",
+      "images/prod3/style2.jpg",
+      "images/prod3/style3.jpg",
+      "images/prod3/style4.jpg",
+      "images/prod3/style5.jpg",
+      "images/prod3/style6.jpg",
+    ],
+  },
+  {
+    id: 4,
+    name: "Denim Shirt",
     price: 149,
-    image:
-      "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=900&q=80",
-    description: "Sharp slim-fit trousers for polished day-to-night looks.",
+    description: "Contemporary denim texture with refined details, crafted for premium casual wardrobes.",
+    styles: [
+      "images/prod4/style1.jpg",
+      "images/prod4/style2.jpg",
+      "images/prod4/style3.jpg",
+      "images/prod4/style4.jpg",
+      "images/prod4/style5.jpg",
+      "images/prod4/style6.jpg",
+    ],
   },
   {
-    id: "beige-chinos",
-    type: "pants",
-    name: "Beige Chinos",
+    id: 5,
+    name: "Olive Shirt",
+    price: 125,
+    description: "Muted olive tones and sharp tailoring deliver understated luxury in everyday styling.",
+    styles: [
+      "images/prod5/style1.jpg",
+      "images/prod5/style2.jpg",
+      "images/prod5/style3.jpg",
+      "images/prod5/style4.jpg",
+      "images/prod5/style5.jpg",
+      "images/prod5/style6.jpg",
+    ],
+  },
+  {
+    id: 6,
+    name: "Striped Shirt",
     price: 132,
-    image:
-      "https://images.unsplash.com/photo-1520367745676-54f249b2c2ee?auto=format&fit=crop&w=900&q=80",
-    description: "Soft beige chinos with tapered lines and comfort stretch fabric.",
+    description: "Editorial stripe pattern with a modern fit to bring contrast to curated fashion looks.",
+    styles: [
+      "images/prod6/style1.jpg",
+      "images/prod6/style2.jpg",
+      "images/prod6/style3.jpg",
+      "images/prod6/style4.jpg",
+      "images/prod6/style5.jpg",
+      "images/prod6/style6.jpg",
+    ],
   },
   {
-    id: "grey-formal-pants",
-    type: "pants",
-    name: "Grey Formal Pants",
-    price: 158,
-    image:
-      "https://images.unsplash.com/photo-1593030103066-0093718efeb9?auto=format&fit=crop&w=900&q=80",
-    description: "Tailored formal pants cut for modern professional wardrobes.",
+    id: 7,
+    name: "Black Slim Pants",
+    price: 159,
+    description: "Sculpted slim silhouette with stretch comfort, designed for sleek urban styling.",
+    styles: [
+      "images/prod7/style1.jpg",
+      "images/prod7/style2.jpg",
+      "images/prod7/style3.jpg",
+      "images/prod7/style4.jpg",
+      "images/prod7/style5.jpg",
+      "images/prod7/style6.jpg",
+    ],
   },
   {
-    id: "dark-blue-jeans",
-    type: "pants",
-    name: "Dark Blue Jeans",
-    price: 144,
-    image:
-      "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=900&q=80",
-    description: "Refined dark-wash denim balancing comfort and clean lines.",
+    id: 8,
+    name: "Beige Chinos",
+    price: 149,
+    description: "Soft beige tailoring with clean lines, perfect for versatile premium outfit building.",
+    styles: [
+      "images/prod8/style1.jpg",
+      "images/prod8/style2.jpg",
+      "images/prod8/style3.jpg",
+      "images/prod8/style4.jpg",
+      "images/prod8/style5.jpg",
+      "images/prod8/style6.jpg",
+    ],
   },
   {
-    id: "khaki-pants",
-    type: "pants",
+    id: 9,
+    name: "Grey Pants",
+    price: 152,
+    description: "Modern tapered shape in cool grey, balancing formal precision with casual ease.",
+    styles: [
+      "images/prod9/style1.jpg",
+      "images/prod9/style2.jpg",
+      "images/prod9/style3.jpg",
+      "images/prod9/style4.jpg",
+      "images/prod9/style5.jpg",
+      "images/prod9/style6.jpg",
+    ],
+  },
+  {
+    id: 10,
+    name: "Dark Jeans",
+    price: 165,
+    description: "Premium dark-wash denim with minimalist detailing for polished everyday wear.",
+    styles: [
+      "images/prod10/style1.jpg",
+      "images/prod10/style2.jpg",
+      "images/prod10/style3.jpg",
+      "images/prod10/style4.jpg",
+      "images/prod10/style5.jpg",
+      "images/prod10/style6.jpg",
+    ],
+  },
+  {
+    id: 11,
     name: "Khaki Pants",
-    price: 138,
-    image:
-      "https://images.unsplash.com/photo-1475180098004-ca77a66827be?auto=format&fit=crop&w=900&q=80",
-    description: "Relaxed khaki silhouette made for premium everyday wear.",
+    price: 146,
+    description: "Refined khaki tone with structured drape, built for curated layering and styling.",
+    styles: [
+      "images/prod11/style1.jpg",
+      "images/prod11/style2.jpg",
+      "images/prod11/style3.jpg",
+      "images/prod11/style4.jpg",
+      "images/prod11/style5.jpg",
+      "images/prod11/style6.jpg",
+    ],
   },
   {
-    id: "white-summer-trousers",
-    type: "pants",
-    name: "White Summer Trousers",
-    price: 141,
-    image:
-      "https://images.unsplash.com/photo-1520367445093-50dc08a59d9d?auto=format&fit=crop&w=900&q=80",
-    description: "Crisp lightweight trousers for elevated resort-inspired outfits.",
-  },
-];
-
-const shirtToPantsMap = {
-  "blue-oxford-shirt": ["black-slim-pants", "beige-chinos", "grey-formal-pants"],
-  "white-linen-shirt": ["grey-formal-pants", "khaki-pants", "white-summer-trousers"],
-  "black-casual-shirt": ["beige-chinos", "dark-blue-jeans", "khaki-pants"],
-  "olive-green-shirt": ["black-slim-pants", "beige-chinos", "white-summer-trousers"],
-  "striped-summer-shirt": ["white-summer-trousers", "khaki-pants", "dark-blue-jeans"],
-  "denim-shirt": ["black-slim-pants", "dark-blue-jeans", "beige-chinos"],
-};
-
-const styleVariations = [
-  "Sleeves Folded",
-  "Sleeves Normal",
-  "Tucked In",
-  "Untucked",
-  "Casual Style",
-  "Smart Style",
-];
-
-const outfitGallery = [
-  {
-    title: "Casual street look",
-    image:
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1000&q=80",
-  },
-  {
-    title: "Office style",
-    image:
-      "https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1000&q=80",
-  },
-  {
-    title: "Smart casual",
-    image:
-      "https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=1000&q=80",
-  },
-  {
-    title: "Summer outfit",
-    image:
-      "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=80",
-  },
-  {
-    title: "City evening style",
-    image:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1000&q=80",
-  },
-  {
-    title: "Weekend minimal",
-    image:
-      "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1000&q=80",
+    id: 12,
+    name: "White Trousers",
+    price: 169,
+    description: "Crisp white tailoring with a fluid silhouette for statement luxury outfit moments.",
+    styles: [
+      "images/prod12/style1.jpg",
+      "images/prod12/style2.jpg",
+      "images/prod12/style3.jpg",
+      "images/prod12/style4.jpg",
+      "images/prod12/style5.jpg",
+      "images/prod12/style6.jpg",
+    ],
   },
 ];
 
 function getProductById(id) {
-  return fashionProducts.find((item) => item.id === id);
+  const numericId = Number(id);
+  return products.find((product) => product.id === numericId);
 }
 
-function formatPrice(value) {
-  return `$${value}`;
+function formatPrice(price) {
+  return `$${price}`;
 }

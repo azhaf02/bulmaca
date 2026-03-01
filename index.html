@@ -3,83 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LUXEWEAR | Virtual Outfit Styling</title>
+    <title>MODA | Luxury Fashion Story</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="topbar">
-      <a href="index.html" class="brand">LUXEWEAR</a>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="products.html">Collection</a>
-      </nav>
+    <header class="site-header">
+      <a class="brand" href="index.html">MODA</a>
+      <a class="header-link" href="#collection">Collection</a>
     </header>
 
     <main>
-      <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content container glass-card">
-          <p class="eyebrow">Virtual Styling Experience</p>
-          <h1>Premium Fashion, Styled Instantly.</h1>
-          <p>
-            Discover a startup-ready concept where shirts, pants, and styling variations come together
-            in one elegant virtual outfit preview.
-          </p>
-          <a href="products.html" class="btn-primary">Explore Collection</a>
+      <section class="home-hero">
+        <img src="images/prod1/style2.jpg" alt="Luxury fashion hero" />
+        <div class="home-hero-overlay"></div>
+        <div class="home-hero-content">
+          <p class="eyebrow light">New Collection</p>
+          <h1>MODA</h1>
+          <p>Minimal luxury silhouettes crafted for modern everyday styling.</p>
+          <a href="#collection" class="cta">Explore Collection</a>
         </div>
       </section>
 
-      <section class="container section">
+      <section class="collection" id="collection">
         <div class="section-head">
-          <h2>Featured Collection</h2>
-          <a href="products.html" class="inline-link">View all</a>
+          <h2>Curated Essentials</h2>
         </div>
-        <div class="product-grid" id="featured-grid"></div>
-      </section>
+        <div class="product-grid">
+          <a class="product-card" href="product1.html">
+            <div class="product-image"><img src="images/prod1/style1.jpg" alt="Blue Oxford Shirt" /></div>
+            <div class="product-copy">
+              <h3>Blue Oxford Shirt</h3>
+              <p>$129</p>
+            </div>
+          </a>
 
-      <section class="container section">
-        <h2>How It Works</h2>
-        <div class="steps-grid">
-          <article class="step-card">
-            <span>01</span>
-            <h3>Browse clothing</h3>
-            <p>Explore curated shirts and pants in a modern fashion grid.</p>
-          </article>
-          <article class="step-card">
-            <span>02</span>
-            <h3>Click a product</h3>
-            <p>Open a product detail page and launch the virtual preview.</p>
-          </article>
-          <article class="step-card">
-            <span>03</span>
-            <h3>See styled variations</h3>
-            <p>Switch matching pants and style modes to discover your perfect look.</p>
-          </article>
+          <a class="product-card" href="product2.html">
+            <div class="product-image"><img src="images/prod2/style1.jpg" alt="White Linen Shirt" /></div>
+            <div class="product-copy">
+              <h3>White Linen Shirt</h3>
+              <p>$139</p>
+            </div>
+          </a>
+
+          <a class="product-card" href="product3.html">
+            <div class="product-image"><img src="images/prod3/style1.jpg" alt="Black Casual Shirt" /></div>
+            <div class="product-copy">
+              <h3>Black Casual Shirt</h3>
+              <p>$119</p>
+            </div>
+          </a>
+
+          <a class="product-card" href="product4.html">
+            <div class="product-image"><img src="images/prod4/style1.jpg" alt="Denim Shirt" /></div>
+            <div class="product-copy">
+              <h3>Denim Shirt</h3>
+              <p>$149</p>
+            </div>
+          </a>
         </div>
-      </section>
-
-      <section class="container section">
-        <h2>Trending Looks</h2>
-        <div class="look-grid" id="trending-looks"></div>
-      </section>
-
-      <section class="container section smart-match">
-        <h2>Perfect Match</h2>
-        <div id="perfect-match-list" class="match-list"></div>
       </section>
     </main>
-
-    <footer class="footer">
-      <p>© 2026 LUXEWEAR — Virtual Outfit Styling Experience</p>
-    </footer>
-
-    <script src="data.js"></script>
-    <script src="home.js"></script>
   </body>
 </html>
