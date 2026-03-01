@@ -1,17 +1,19 @@
-const allProductsGrid = document.getElementById("all-products-grid");
+const productGrid = document.getElementById("product-grid");
 
-if (allProductsGrid) {
-  allProductsGrid.innerHTML = fashionProducts.map((product) => `
-    <article class="product-card">
-      <img src="${product.image}" alt="${product.name}" loading="lazy" />
-      <div class="card-content">
-        <h3>${product.name}</h3>
-        <p>${product.type === "shirt" ? "Shirt" : "Pants"}</p>
-        <div class="card-row">
-          <strong>${formatPrice(product.price)}</strong>
-          <a class="btn-secondary" href="product.html?id=${product.id}">Quick preview</a>
+if (productGrid) {
+  productGrid.innerHTML = products
+    .map(
+      (product) => `
+      <a class="product-card" href="product.html?id=${product.id}">
+        <div class="product-media">
+          <img src="${product.image}" alt="${product.name}" loading="lazy" />
         </div>
-      </div>
-    </article>
-  `).join("");
+        <div class="product-content">
+          <h2>${product.name}</h2>
+          <p>${formatPrice(product.price)}</p>
+        </div>
+      </a>
+    `
+    )
+    .join("");
 }
