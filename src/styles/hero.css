@@ -1,0 +1,76 @@
+.hero {
+  min-height: calc(100vh - 110px);
+  display: flex;
+  align-items: center;
+  padding-top: 3rem;
+}
+
+.hero-content {
+  width: 100%;
+  border-radius: 28px;
+  padding: clamp(1.8rem, 4vw, 3.5rem);
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.18);
+  color: #b8befe;
+  font-size: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.hero-title {
+  margin: 0;
+  font-size: clamp(2.1rem, 6vw, 4.4rem);
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  margin: 0.8rem 0 0;
+  font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+  color: #78e4ff;
+}
+
+.hero-description {
+  margin: 1.3rem 0 0;
+  max-width: 46rem;
+  color: rgba(234, 237, 255, 0.82);
+  font-size: clamp(1rem, 2vw, 1.12rem);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.hero-actions button {
+  border: 0;
+  border-radius: 12px;
+  padding: 0.75rem 1.3rem;
+  cursor: pointer;
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: #060608;
+  background: linear-gradient(110deg, #8b5cf6, #22d3ee);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-actions button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(34, 211, 238, 0.32);
+}
+
+.hero-actions button.secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+@media (max-width: 580px) {
+  .hero-actions {
+    flex-direction: column;
+  }
+}
